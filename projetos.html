@@ -1,16 +1,4 @@
-<main id="conteudo-principal">
-    
-    <section id="hero-projetos" class="hero-projetos">
-        <h1 class="titulo-pagina">Nossos Projetos de Impacto</h1>
-        <p>Conheça as iniciativas que estão transformando vidas e comunidades. Sua ajuda faz cada um desses projetos acontecer.</p>
-    </section>
-    
-    <section class="secao-titulo">
-        <h2>Projetos em Destaque</h2>
-        <p>Navegue pelos projetos ativos e veja como cada área está contribuindo para um futuro mais justo.</p>
-    </section>
-    
-    <section id="projetos-em-destaque">
+<section id="projetos-em-destaque">
         
         <article class="project-card" id="raizes">
             <figure class="card-image-container">
@@ -24,13 +12,13 @@
                     <span><strong>80</strong> Pessoas Atingidas</span>
                     <span><strong>15</strong> Voluntários</span>
                 </div>
-                <a href="#raizes" class="details-link">Ver Detalhes do Projeto</a>
+                <a href="projetos.html#raizes" class="details-link">Ver Detalhes do Projeto</a>
             </div>
         </article>
 
         <article class="project-card" id="conexao">
             <figure class="card-image-container">
-                <img src="img/conexao-digital.jpg" alt="Jovem usando computador" loading="lazy">
+                <img src="img/hero.jpg.jpg" alt="Jovem usando computador" loading="lazy">
                 <span class="badge badge-primaria-dark">Inclusão Digital</span>
             </figure>
             <div class="card-content">
@@ -40,7 +28,7 @@
                     <span><strong>12</strong> Turmas Formadas</span>
                     <span><strong>25</strong> Equipamentos Novos</span>
                 </div>
-                <a href="#conexao" class="details-link">Ver Detalhes do Projeto</a>
+                <a href="projetos.html#conexao" class="details-link">Ver Detalhes do Projeto</a>
             </div>
         </article>
 
@@ -56,9 +44,60 @@
                     <span><strong>120</strong> Famílias Ajudadas</span>
                     <span><strong>5</strong> Médicos Voluntários</span>
                 </div>
-                <a href="#saude" class="details-link">Ver Detalhes do Projeto</a>
+                <a href="projetos.html#saude" class="details-link">Ver Detalhes do Projeto</a>
             </div>
         </article>
         
     </section>
     <section id="voluntariado">
+        <h2>Seja Um Voluntário</h2>
+        <p>Sua paixão e seu tempo são inestimáveis para a nossa causa. Descubra como você pode contribuir com suas habilidades.</p>
+        
+        <details>
+            <summary>Conheça as Áreas de Atuação <span aria-hidden="true">▼</span></summary>
+            <div>
+                <p>Temos diversas áreas: educação, saúde, tecnologia, apoio administrativo. Entre em contato para saber mais!</p>
+            </div>
+        </details>
+        
+        <details>
+            <summary>Pré-requisitos e Processo de Seleção <span aria-hidden="true">▼</span></summary>
+            <div>
+                <p>Preencha o formulário de cadastro e aguarde nosso contato para uma entrevista de perfil.</p>
+            </div>
+        </details>
+
+        <a href="cadastro.html" class="cta-button" style="margin-top: var(--espaco-lg);">Cadastre-se como Voluntário</a>
+    </section>
+
+    <section id="doacao">
+        <h2>Faça a Diferença com Sua Doação</h2>
+        <p>Cada doação, por menor que seja, nos ajuda a manter e expandir o alcance de nossos projetos sociais. Sua contribuição é 100% aplicada em ações de impacto.</p>
+            <form action="cadastro.html" method="get">
+                <fieldset>
+                    <legend>Como você deseja contribuir?</legend>
+                    <label for="valor-doacao">Valor Sugerido:</label>
+                    <select id="valor-doacao" name="valor-sugerido">
+                        <option value="50">R$ 50,00</option>
+                        <option value="100">R$ 100,00</option>
+                        <option value="outros">Outro Valor</option>
+                    </select>
+                    <label>
+                        <input type="radio" name="tipo-doacao" value="unica" checked> Doação Única
+                    </label>
+                    <label>
+                        <input type="radio" name="tipo-doacao" value="mensal"> Doação Mensal
+                    </label>
+                    <p class="small-text">Ao clicar em "Doar Agora", você será redirecionado para nossa página de cadastro/pagamento seguro.</p>
+                    <button type="submit" class="cta-button">Doar Agora</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 [Nome da ONG]. Todos os direitos reservados. | <a href="#">Termos de Uso</a></p>
+    </footer>
+    
+    </body>
+</html>
