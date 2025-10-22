@@ -1,49 +1,148 @@
-/* Estilo para Mensagens de Erro de Validação */
-.error-message {
-    color: #dc3545; /* Vermelho forte */
-    font-size: var(--tamanho-small);
-    margin-top: -10px; /* Reduz espaço entre input e mensagem */
-    margin-bottom: var(--espaco-md);
-    display: block;
-}
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-    gap: var(--espaco-xl); 
-    margin-top: var(--espaco-lg); 
-    grid-column: 1 / -1; /* Ocupa a largura total do main */
-}
-/* Estilo de card-projeto (Se ainda não tiver) */
-.card-projeto {
-    box-shadow: var(--sombra-padrao);
+/* Módulo: _components.css - Estilos para Componentes de Interface */
+
+/* ========================================= */
+/* BOTÕES (Com Estados Visuais) */
+/* ========================================= */
+.cta-button {
+    display: inline-block;
+    background-color: var(--cor-alerta); 
+    color: var(--cor-clara);
+    padding: var(--espaco-md) var(--espaco-xl); 
     border-radius: var(--border-radius);
-    overflow: hidden;
-    background-color: var(--cor-clara);
-    transition: transform 0.3s;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: var(--tamanho-small);
 }
-.card-projeto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+.cta-button:hover, .cta-button:focus {
+    background-color: #d15c00; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 111, 0, 0.4);
 }
-.card-projeto figure {
-    height: 200px; /* Altura fixa para a imagem */
-    overflow: hidden;
+
+.cta-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+    background-color: var(--cor-primaria-dark);
 }
-.card-projeto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+.cta-button:disabled {
+    background-color: var(--cor-neutra-medium);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
-.card-content {
+
+/* Botão de Doação no Header (Estilo diferente, menos intrusivo) */
+.cta-button-header {
+    display: inline-block;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-clara);
+    padding: var(--espaco-sm) var(--espaco-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, opacity 0.3s;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+.cta-button-header:hover {
+    background-color: var(--cor-secundaria-dark);
+    color: var(--cor-clara);
+}
+
+
+/* ========================================= */
+/* ELEMENTOS DE CONTEÚDO */
+/* ========================================= */
+
+.secao-titulo {
+    text-align: center;
+    grid-column: 4 / 10;
+    padding-bottom: 0;
+}
+.secao-titulo h2, .secao-titulo p {
+    margin-bottom: var(--espaco-md);
+}
+
+/* Links de Documentos/PDF */
+.document-link {
+    display: inline-block;
+    margin-right: var(--espaco-lg);
+    padding: var(--espaco-sm);
+    border-bottom: 2px solid var(--cor-secundaria);
+    font-weight: bold;
+    color: var(--cor-neutra-dark);
+}
+.document-link:hover {
+    color: var(--cor-secundaria);
+}
+
+/* Alertas de Formulário (e.g., validação, sucesso) */
+.alert-warning {
+    background-color: #fff3cd; /* Amarelo claro */
+    color: #856404;            /* Texto escuro */
+    border: 1px solid #ffeeba;
     padding: var(--espaco-md);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    border-radius: var(--border-radius);
+    margin-top: var(--espaco-lg);
 }
-.card-content .cta-button {
-    margin-top: auto; /* Empurra o botão para baixo */
-    align-self: flex-start;
+.alert-warning p {
+    margin-bottom: var(--espaco-sm);
+}
+
+/* Indicadores de Projetos (e.g., número de pessoas atingidas) */
+.indicadores {
+    margin-top: var(--espaco-md);
+    padding-top: var(--espaco-md);
+    border-top: 1px solid var(--cor-borda);
+    display: flex;
+    justify-content: space-between;
+    gap: var(--espaco-sm);
+    font-size: var(--tamanho-small);
+    flex-wrap: wrap;
+}
+
+.indicadores span {
+    background-color: #f0f0f0;
+    padding: var(--espaco-xs) var(--espaco-sm);
+    border-radius: 3px;
+    color: var(--cor-neutra-dark);
+}
+.indicadores span strong {
+    color: var(--cor-principal);
+}
+
+/* ========================================= */
+/* BADGES E TAGS (Para categorização) */
+/* ========================================= */
+.badge {
+    display: inline-block;
+    padding: var(--espaco-xs) var(--espaco-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: var(--espaco-sm);
+}
+
+.badge-primaria {
+    background-color: var(--cor-principal);
+    color: var(--cor-clara);
+}
+
+/* NOVO BADGE: Corrigido o contraste para o badge secundário (verde) */
+.badge-secundaria {
+    background-color: var(--cor-secundaria); 
+    color: var(--cor-neutra-dark); /* Mudado para cor escura para melhor contraste */
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1); /* Adicionado um contorno leve para destacar */
+}
+
+.badge-primaria-dark {
+    background-color: var(--cor-primaria-dark);
+    color: var(--cor-clara);
 }
