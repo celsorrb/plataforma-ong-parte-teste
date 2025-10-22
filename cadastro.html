@@ -24,136 +24,98 @@
                     <a href="projetos.html" role="button" aria-expanded="false">Projetos Sociais ▼</a>
                     <ul class="dropdown-content">
                         <li><a href="projetos.html#raizes">Raízes do Futuro</a></li>
-                        <li><a href="projetos.html#conexao">Conexão Digital</a></li>
-                        <li><a href="projetos.html#saude">Saúde Comunitária</a></li>
+                        <li><a href="projetos.html#conectividade">Conectividade e Inclusão</a></li>
                     </ul>
                 </li>
-                <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
-                <li><a href="projetos.html#doacao">Doação</a></li>
-                <li><a href="index.html#contato">Contato</a></li> 
-                <li><a href="cadastro.html" aria-current="page" class="cta-header">Cadastre-se</a></li>
+                <li><a href="cadastro.html" aria-current="page">Seja Voluntário/Doador</a></li>
+                <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
-        
-        <a href="projetos.html#doacao" class="cta-button-header">Doe Agora</a>
-        
+
+        <a href="projetos.html#doacao" class="cta-button cta-header">Doe Agora</a>
     </header>
 
     <main id="conteudo-principal">
-        <section class="secao-titulo">
+        <section id="cadastro" class="form-grid">
             <h1>Junte-se à Nossa Causa</h1>
-            <p>Seu interesse em ajudar é o primeiro passo para a transformação. Preencha o formulário abaixo para se registrar como voluntário, doador ou parceiro.</p>
-        </section>
+            <p class="intro-form">Preencha o formulário abaixo para fazer parte da nossa rede de apoio, seja como voluntário ou doador.</p>
 
-        <form id="cadastroForm">
-            <fieldset>
-                <legend>Dados Pessoais</legend>
+            <form id="cadastroForm" action="processa-cadastro.php" method="POST" novalidate>
+                <fieldset class="campo-grid-span">
+                    <legend>Dados Pessoais</legend>
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" name="nome" required>
 
-                <label for="nome">Nome Completo: *</label>
-                <input type="text" id="nome" name="nome" required autocomplete="name">
-
-                <label for="email">E-mail: *</label>
-                <input type="email" id="email" name="email" required autocomplete="email">
-
-                <label for="telefone">Telefone (com DDD): *</label>
-                <input type="tel" id="telefone" name="telefone" required autocomplete="tel" placeholder="(00) 00000-0000">
-
-                <label for="cpf">CPF: *</label>
-                <input type="text" id="cpf" name="cpf" required autocomplete="off" placeholder="000.000.000-00">
-
-                <label for="nascimento">Data de Nascimento: *</label>
-                <input type="date" id="nascimento" name="nascimento" required>
-            </fieldset>
-
-            <fieldset>
-                <legend>Endereço</legend>
-
-                <label for="cep">CEP: *</label>
-                <input type="text" id="cep" name="cep" required autocomplete="postal-code" placeholder="00000-000" maxlength="9">
-
-                <label for="endereco">Rua/Avenida: *</label>
-                <input type="text" id="endereco" name="endereco" required autocomplete="street-address" disabled>
-
-                <label for="numero">Número: *</label>
-                <input type="text" id="numero" name="numero" required autocomplete="address-line2">
-
-                <label for="complemento">Complemento:</label>
-                <input type="text" id="complemento" name="complemento" autocomplete="address-line3">
-
-                <label for="bairro">Bairro: *</label>
-                <input type="text" id="bairro" name="bairro" required autocomplete="address-line4">
-
-                <label for="cidade">Cidade: *</label>
-                <input type="text" id="cidade" name="cidade" required disabled>
-
-                <label for="estado">Estado: *</label>
-                <select id="estado" name="estado" required disabled>
-                    <option value="" disabled selected>Selecione seu Estado</option> 
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </select>
-            </fieldset>
-
-            <fieldset class="interesse">
-                <legend>Como Você Deseja Contribuir?</legend>
-                
-                <div style="grid-column: 1 / -1; display: flex; gap: 20px;">
-                    <label class="radio-label">
-                        <input type="checkbox" id="voluntario" name="interesse" value="voluntario"> Desejo ser Voluntário
-                    </label>
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
                     
-                    <label class="radio-label">
-                        <input type="checkbox" id="doador" name="interesse" value="doador"> Desejo ser Doador/Apoiador
-                    </label>
-                </div>
+                    <label for="cpf">CPF (apenas números) *</label>
+                    <input type="text" id="cpf" name="cpf" maxlength="11" required pattern="\d{11}">
+
+                    <label for="telefone">Telefone (DDD + Número) *</label>
+                    <input type="text" id="telefone" name="telefone" required>
+                </fieldset>
                 
-                <label for="mensagem" style="grid-column: 1 / -1; margin-top: var(--espaco-md);">Mensagem / Observações (Opcional):</label>
-                <textarea id="mensagem" name="mensagem" rows="4" style="grid-column: 1 / -1;"></textarea>
+                <fieldset class="campo-grid-span">
+                    <legend>Endereço</legend>
+                    <label for="cep">CEP (apenas números) *</label>
+                    <input type="text" id="cep" name="cep" maxlength="8" required pattern="\d{8}">
 
-                <div role="alert" id="alerta-ajuda" class="alert-warning">
-                    <p>Se você deseja ser voluntário, entraremos em contato para uma entrevista de perfil.</p>
-                    <p>Se você deseja ser doador, após o cadastro, será redirecionado para a página de doação segura.</p>
+                    <label for="endereco">Endereço *</label>
+                    <input type="text" id="endereco" name="endereco" required> 
+
+                    <label for="numero">Número *</label>
+                    <input type="text" id="numero" name="numero" required>
+
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento">
+
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" name="bairro">
+
+                    <label for="cidade">Cidade *</label>
+                    <input type="text" id="cidade" name="cidade" required>
+
+                    <label for="estado">Estado *</label>
+                    <select id="estado" name="estado" required>
+                        <option value="">Selecione o Estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="SP">São Paulo</option>
+                        </select>
+                </fieldset>
+
+                <fieldset class="campo-grid-span" id="interesse-field">
+                    <legend>Como Você Deseja Contribuir?</legend>
+                    
+                    <div class="opcoes-interesse">
+                        <label>
+                            <input type="checkbox" id="voluntario" name="interesse" value="voluntario"> Desejo ser Voluntário
+                        </label>
+                        
+                        <label>
+                            <input type="checkbox" id="doador" name="interesse" value="doador"> Desejo ser Doador/Apoiador
+                        </label>
+                    </div>
+
+                    <div role="alert" id="alerta-ajuda" class="alert-warning">
+                        <p id="mensagem-alerta">Selecione pelo menos uma opção. Se for voluntário, entraremos em contato para entrevista. Se for doador, será redirecionado para a doação segura após o cadastro.</p>
+                    </div>
+                </fieldset>
+
+                <div class="termos">
+                    <input type="checkbox" id="aceite_termos" name="aceite_termos" required>
+                    <label for="aceite_termos">Li e aceito os <a href="#" target="_blank">Termos de Uso e Política de Privacidade</a>. *</label>
                 </div>
-            </fieldset>
 
-            <div class="termos">
-                <input type="checkbox" id="aceite_termos" name="aceite_termos" required>
-                <label for="aceite_termos">Li e aceito os <a href="#" target="_blank">Termos de Uso e Política de Privacidade</a>. *</label>
-            </div>
-
-            <button type="submit" class="cta-button">Enviar Cadastro</button>
-        </form>
+                <button type="submit" class="cta-button">Enviar Cadastro</button>
+            </form>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 [Nome da ONG]. Seus direitos de privacidade são importantes. | <a href="#">Política de Privacidade</a></p>
+        <p>&copy; 2024 [Nome da ONG]. Seus direitos reservados. | <a href="#">Política de Privacidade</a></p>
     </footer>
-    
-    <script src="script.js"></script>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
