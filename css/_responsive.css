@@ -1,19 +1,93 @@
+/* Arquivo: _responsive.css - Media Queries e Breakpoints */
+
 /* ========================================= */
-/* AJUSTE DE CARDS (MOBILE) */
-/* ========================================= */
-/* Garante que os cards fiquem em 1 coluna em telas menores */
-@media (max-width: 767px) { 
-    /* Esta regra sobrescreve o 'minmax(350px, 1fr)' definido no _pages.css */
-    #projetos-em-destaque {
-        grid-template-columns: 1fr; /* Apenas 1 coluna */
-        gap: var(--espaco-lg); 
-    }
+/* BREAKPOINTS DEFINIDOS */
+/* Extra Small (Mobile) */
+@media (max-width: 575px) {
+    /* Ajustes globais */
+    body { font-size: 0.95rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.7rem; }
     
-    .card-image-container {
-        height: 250px; /* Mantém a imagem visível e de bom tamanho em mobile */
+    /* Layout Mobile */
+    main { padding: var(--espaco-lg); gap: var(--espaco-md); }
+    section { padding: var(--espaco-lg); }
+    
+    /* Home */
+    .hero-section {
+        grid-template-columns: 1fr;
+    }
+    .hero-section figure, .hero-section > div {
+        grid-column: 1 / -1;
+    }
+    .hero-section > div {
+        padding: var(--espaco-sm) 0 0 0; 
+    }
+    .valores .destaques {
+        flex-direction: column;
     }
 
-    .card-content {
-        padding: var(--espaco-lg) var(--espaco-md); /* Ajuste de padding para mobile */
+    /* Ajuste específico para cards de projeto em mobile */
+    #projetos-em-destaque {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* Small (Tablet Portrait) */
+@media (min-width: 576px) and (max-width: 767px) {
+    main { padding: var(--espaco-xl); }
+    
+    /* CORREÇÃO APLICADA: Projetos fica em 1 coluna em telas de tablet para melhor visualização */
+    #projetos-em-destaque {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* Medium (Tablet Landscape / Desktop Pequeno) */
+@media (max-width: 991px) {
+    header {
+        position: fixed; /* Fixa o header em mobile */
+        padding: var(--espaco-md) var(--espaco-lg);
+    }
+    
+    nav {
+        /* Esconde a nav no mobile por padrão */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--cor-neutra-dark);
+        color: var(--cor-clara);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+        padding-top: var(--espaco-xxxl);
+    }
+    
+    nav.mobile-active {
+        transform: translateX(0);
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--espaco-lg);
+        width: 100%;
+    }
+    
+    nav a, .cta-header {
+        color: var(--cor-clara);
+        border-bottom: none !important;
+        font-size: var(--tamanho-h4);
+        padding: var(--espaco-md);
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .menu-toggle {
+        display: block; /* Mostra o botão de menu */
+        z-index: 1001; /* Fica acima do menu */
     }
 }
