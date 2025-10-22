@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const enderecoInput = document.getElementById('endereco');
     const cidadeInput = document.getElementById('cidade');
     const estadoSelect = document.getElementById('estado');
+    const bairroInput = document.getElementById('bairro'); // Adicionado
+    const numeroInput = document.getElementById('numero'); // Adicionado
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.getElementById('navegacao-principal');
     const cadastroForm = document.getElementById('cadastroForm');
@@ -59,37 +61,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const cep = cepInput.value.replace(/\D/g, '');
         if (cep.length !== 8) return;
 
-        // Desabilita os campos enquanto busca
-        enderecoInput.disabled = true;
-        cidadeInput.disabled = true;
-        estadoSelect.disabled = true;
+        // Limpa campos anteriores
+        enderecoInput.value = '';
+        bairroInput.value = '';
+        cidadeInput.value = '';
+        estadoSelect.value = '';
+
 
         try {
             const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
             const data = await response.json();
 
             if (data.erro) {
-                enderecoInput.value = '';
-                cidadeInput.value = '';
-                estadoSelect.value = '';
+                // Se o CEP falhar, exibe alerta e limpa
                 alert('CEP não encontrado ou inválido.');
             } else {
                 // Preenche os campos
-                enderecoInput.value = data.logradouro + (data.bairro ? (' - ' + data.bairro) : ''); // Inclui o bairro para contexto
+                enderecoInput.value = data.logradouro; 
+                bairroInput.value = data.bairro;
                 cidadeInput.value = data.localidade;
                 estadoSelect.value = data.uf; 
-                document.getElementById('numero').focus(); // Foca no campo 'número'
+                
+                // Foca no campo 'número' para que o usuário continue o preenchimento
+                if (numeroInput) {
+                    numeroInput.focus(); 
+                }
             }
 
         } catch (error) {
             console.error('Erro ao buscar CEP:', error);
-            alert('Falha na comunicação com o serviço de CEP.');
-        } finally {
-            // CORRIGIDO: Garante que os campos voltem a ser editáveis após a busca
-            enderecoInput.disabled = false;
-            cidadeInput.disabled = false;
-            estadoSelect.disabled = false;
-        }
+            alert('Falha na comunicação com o serviço de CEP. Tente novamente.');
+        } 
+        // Não há 'finally' com desabilitar/reabilitar, pois os campos são livres para edição.
     };
 
     if (cepInput) {
@@ -108,23 +111,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const mensagemPadrao = 'Selecione pelo menos uma opção. Se for voluntário, entraremos em contato para entrevista. Se for doador, será redirecionado para a doação segura após o cadastro.';
 
 
-    // CORRIGIDO: Funções para controle visual do alerta
+    // Funções para controle visual do alerta
     const mostrarErro = (mensagem) => {
         mensagemAlerta.textContent = mensagem;
-        // Aplica a classe de erro (assumindo que existe um estilo para isso no CSS)
         alertaAjuda.classList.add('alerta-erro');
         alertaAjuda.style.border = '2px solid var(--cor-perigo)'; 
-        // Em um sistema de design completo, usaríamos uma classe: alertaAjuda.classList.add('is-error');
     };
 
     const limparErro = () => {
         mensagemAlerta.textContent = mensagemPadrao;
         alertaAjuda.classList.remove('alerta-erro');
-        // Volta para o estilo padrão de 'alert-warning' ou similar
         alertaAjuda.style.border = 'none'; 
     };
 
-    // CORRIGIDO: Ouve a interação para limpar o erro imediatamente
+    // Ouve a interação para limpar o erro imediatamente
     if (voluntarioInput && doadorInput) {
         voluntarioInput.addEventListener('change', limparErro);
         doadorInput.addEventListener('change', limparErro);
@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!voluntario && !doador) {
                 e.preventDefault();
-                // CORRIGIDO: Removido o alert() e substituído por validação visual
                 mostrarErro('**ATENÇÃO:** Por favor, selecione pelo menos uma forma de contribuição (Voluntário ou Doador) para continuar.');
                 
                 // Rola a tela até o campo para melhor visibilidade em mobile/telas pequenas
