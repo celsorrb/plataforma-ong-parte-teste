@@ -1,80 +1,107 @@
-// Importa os módulos
-import { initSPA } from './spa.js';
-import { renderProjects } from './templates.js';
-import { initValidation } from './validation.js';
-
-// =========================================================================
-// FUNÇÕES UTILS (Máscaras, API de CEP)
-// Código do seu antigo script.js, modularizado em funções
-// =========================================================================
-
-function applyMasks() {
+document.addEventListener('DOMContentLoaded', () => {
     const cpfInput = document.getElementById('cpf');
     const telefoneInput = document.getElementById('telefone');
-    const cepInput = document.getElementById('cep');
-
-    // Função de máscara de CPF (sem biblioteca externa)
-    if (cpfInput) {
-        cpfInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não for dígito
-            value = value.replace(/(\d{3})(\d)/, '$1.$2');
-            value = value.replace(/(\d{3})(\d)/, '$1.$2');
-            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-            e.target.value = value;
-        });
-    }
-
-    // Função de máscara de Telefone
-    if (telefoneInput) {
-        telefoneInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-            value = value.replace(/(\d)(\d{4})$/, '$1-$2');
-            e.target.value = value;
-        });
-    }
-    
-    // Função de máscara de CEP
-     if (cepInput) {
-        cepInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            value = value.replace(/^(\d{5})(\d)/, '$1-$2');
-            e.target.value = value;
-        });
-    }
-}
-
-
-// Função para busca de CEP
-async function setupCEPLookup() {
     const cepInput = document.getElementById('cep');
     const enderecoInput = document.getElementById('endereco');
     const cidadeInput = document.getElementById('cidade');
     const estadoSelect = document.getElementById('estado');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.getElementById('navegacao-principal');
 
-    if (!cepInput || !enderecoInput || !cidadeInput || !estadoSelect) return;
+    /* ========================================= */
+    /* 1. NAVEGAÇÃO MOBILE (MENU HAMBÚRGUER) */
+    /* ========================================= */
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('mobile-active');
 
-    const buscaCEP = async () => {
+            // Adiciona ou remove o bloqueio de scroll no body
+            document.body.style.overflow = navMenu.classList.contains('mobile-active') ? 'hidden' : '';
+
+            // Haptic Feedback sutil para toque no celular
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(50);
+            }
+        });
+
+        // Fechar menu ao clicar em um link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                // Fechar se for em tela mobile/tablet E se o link não for um dropdown
+                if (window.innerWidth <= 991 && !link.closest('.dropdown')) { 
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    navMenu.classList.remove('mobile-active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    }
+
+    /* ========================================= */
+    /* 2. MÁSCARAS DE FORMULÁRIO */
+    /* ========================================= */
+
+    const mask = (value, pattern) => {
+        let i = 0;
+        const v = value.toString().replace(/\D/g, '');
+        return pattern.replace(/#/g, () => v[i++] || '');
+    };
+
+    if (cpfInput) {
+        cpfInput.addEventListener('input', (e) => {
+            e.target.value = mask(e.target.value, '###.###.###-##');
+        });
+    }
+
+    if (telefoneInput) {
+        telefoneInput.addEventListener('input', (e) => {
+            // Máscara para telefone (Fixo: (00) 0000-0000 / Celular: (00) 00000-0000)
+            let pattern = (e.target.value.replace(/\D/g, '').length === 11) ? '(##) #####-####' : '(##) ####-####';
+            e.target.value = mask(e.target.value, pattern);
+        });
+    }
+
+    if (cepInput) {
+        cepInput.addEventListener('input', (e) => {
+            e.target.value = mask(e.target.value, '#####-###');
+        });
+    }
+
+
+    /* ========================================= */
+    /* 3. BUSCA DE CEP (ViaCEP) */
+    /* ========================================= */
+
+    // Otimização: Debounce para evitar múltiplas chamadas à API
+    let timeoutId;
+    const buscaCEP = () => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(processaBuscaCEP, 500); // Espera 500ms
+    };
+    
+    const processaBuscaCEP = async () => {
         const cep = cepInput.value.replace(/\D/g, '');
+
         if (cep.length !== 8) return;
 
+        // Desabilita campos enquanto busca
+        enderecoInput.disabled = true;
+        cidadeInput.disabled = true;
+        estadoSelect.disabled = true;
+        
         try {
-            enderecoInput.value = "Buscando...";
-            cidadeInput.value = "Buscando...";
-            estadoSelect.value = "";
-            enderecoInput.disabled = true;
-            cidadeInput.disabled = true;
-            estadoSelect.disabled = true;
-
             const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
             const data = await response.json();
 
             if (data.erro) {
-                alert('CEP não encontrado ou inválido.');
+                alert('CEP não encontrado. Preencha o endereço manualmente.');
             } else {
-                enderecoInput.value = data.logradouro + (data.bairro ? (', ' + data.bairro) : '');
+                enderecoInput.value = data.logradouro;
+                document.getElementById('bairro').value = data.bairro;
                 cidadeInput.value = data.localidade;
-                estadoSelect.value = data.uf; 
+                estadoSelect.value = data.uf;
             }
 
         } catch (error) {
@@ -84,76 +111,38 @@ async function setupCEPLookup() {
             enderecoInput.disabled = false;
             cidadeInput.disabled = false;
             estadoSelect.disabled = false;
+            // Se o endereço foi encontrado, foca no campo número
+            if (enderecoInput.value) {
+                document.getElementById('numero').focus();
+            }
         }
     };
 
-    cepInput.removeEventListener('blur', buscaCEP); // Remove para evitar duplicação no SPA
-    cepInput.addEventListener('blur', buscaCEP);
-}
-
-// =========================================================================
-// FUNÇÕES DE UI (Menu Hamburger)
-// =========================================================================
-
-function setupMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.getElementById('navegacao-principal');
+    if (cepInput) {
+        cepInput.addEventListener('input', buscaCEP); // Agora aciona o debounce
+    }
     
-    if (menuToggle && navMenu) {
-        const toggleMenu = () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            navMenu.classList.toggle('mobile-active');
-            
-            document.body.style.overflow = navMenu.classList.contains('mobile-active') ? 'hidden' : '';
-        };
-        
-        menuToggle.removeEventListener('click', toggleMenu); // Remove para evitar duplicação
-        menuToggle.addEventListener('click', toggleMenu);
-        
-        // Fechar menu ao clicar em um link (para o SPA e para links internos)
-        navMenu.querySelectorAll('a').forEach(link => {
-            const closeMenu = () => {
-                // Fechar se for em tela mobile e o menu estiver aberto
-                if (window.innerWidth <= 991 && navMenu.classList.contains('mobile-active')) {
-                    toggleMenu();
-                }
-            };
-            link.removeEventListener('click', closeMenu);
-            link.addEventListener('click', closeMenu);
+    /* ========================================= */
+    /* 4. VALIDAÇÃO ADICIONAL DE FORMULÁRIO */
+    /* ========================================= */
+    const cadastroForm = document.getElementById('cadastroForm');
+    if (cadastroForm) {
+        cadastroForm.addEventListener('submit', (e) => {
+            const voluntario = document.getElementById('voluntario').checked;
+            const doador = document.getElementById('doador').checked;
+            const alertaAjuda = document.getElementById('alerta-ajuda');
+
+            if (!voluntario && !doador) {
+                e.preventDefault();
+                alert('Por favor, selecione pelo menos uma forma de contribuição (Voluntário ou Doador).');
+                alertaAjuda.style.border = '2px solid var(--cor-alerta)'; 
+            } else {
+                 alertaAjuda.style.border = 'none';
+                 
+                 // Simulação de envio - Ação real seria aqui
+                 alert('Obrigado por se cadastrar! Entraremos em contato em breve.');
+                 e.preventDefault(); // Impede o envio real para fins de demonstração
+            }
         });
     }
-}
-
-// =========================================================================
-// INICIALIZAÇÃO GERAL (Chamado no DOMContentLoaded e no SPA)
-// =========================================================================
-
-function initPage() {
-    // 1. Inicialização de UI e Utils
-    setupMobileMenu();
-    applyMasks();
-    setupCEPLookup();
-    
-    // 2. Inicialização dos módulos de Entrega III
-    initValidation(); // Validação do Formulário (CPF/Data)
-    renderProjects(); // Sistema de Templates
-}
-
-
-// Cria um objeto global para expor initPage (necessário para o spa.js)
-window.app = {
-    initPage: initPage
-};
-
-// =========================================================================
-// START: INICIALIZAÇÃO
-// =========================================================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Inicializa o SPA (captura cliques nos links)
-    initSPA();
-    
-    // 2. Executa todas as inicializações para o carregamento inicial da página
-    initPage();
 });
