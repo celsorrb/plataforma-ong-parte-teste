@@ -7,16 +7,14 @@
 /* ESTILOS DE FORMULÁRIOS (cadastro.html) */
 /* ========================================= */
 
-/* ... (outros estilos de formulário, se houver) ... */
-
 /* CORRIGIDO: Novo estilo para as opções de interesse no formulário de cadastro */
 .form-grid .opcoes-interesse {
     /* Ocupa a largura total (12 colunas) do grid principal do formulário */
     grid-column: 1 / -1; 
     /* Estilos de layout que estavam inline */
     display: flex;
-    gap: var(--espaco-lg); /* Usei var(--espaco-lg) para um bom espaçamento, ou var(--espaco-md) se preferir algo menor */
-    flex-wrap: wrap; /* Para garantir responsividade */
+    gap: var(--espaco-lg); 
+    flex-wrap: wrap; 
     align-items: center;
 }
 
@@ -27,8 +25,5 @@
     background-color: #fcebeb; /* Fundo mais claro para erro */
     color: var(--cor-neutra-dark);
 }
-
-/* Se você usar 'alerta-erro' em vez de apenas alterar a borda inline, 
-o estado visual de erro será mais consistente. */
 
 /* ... (código restante do _pages.css) ... */
