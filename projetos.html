@@ -1,94 +1,156 @@
-<section id="projetos-em-destaque">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça nossos projetos sociais, descubra como ser voluntário e faça uma doação online para apoiar nossa causa.">
+    <title>Projetos, Voluntariado e Doação - [Nome da ONG]</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo</a>
+    
+    <header>
+        <div class="logo">
+            <img src="img/ong-logo.png" alt="Logotipo da ONG - Juntos Pela Causa">
+        </div>
         
-        <article class="project-card" id="raizes">
-            <figure class="card-image-container">
-                <img src="img/projeto-educacao.jpg" alt="Crianças estudando em grupo" loading="lazy">
-                <span class="badge badge-primaria">Educação</span>
-            </figure>
-            <div class="card-content">
-                <h3>Raízes do Futuro</h3>
-                <p>Foca na educação de base, oferecendo aulas de reforço e oficinas de arte e esporte para crianças e adolescentes.</p>
-                <div class="indicadores">
-                    <span><strong>80</strong> Pessoas Atingidas</span>
-                    <span><strong>15</strong> Voluntários</span>
+        <button class="menu-toggle" aria-controls="navegacao-principal" aria-expanded="false" aria-label="Abrir Menu">☰</button>
+        
+        <nav aria-label="Navegação Principal" id="navegacao-principal">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                 <li class="dropdown">
+                    <a href="projetos.html" aria-current="page" role="button" aria-expanded="false">Projetos Sociais ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="projetos.html#raizes">Raízes do Futuro</a></li>
+                        <li><a href="projetos.html#conexao">Conexão Digital</a></li>
+                        <li><a href="projetos.html#saude">Saúde Comunitária</a></li>
+                    </ul>
+                </li>
+                <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+                <li><a href="projetos.html#doacao">Doação</a></li>
+                <li><a href="cadastro.html" class="cta-header">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="conteudo-principal">
+        
+        <section id="hero-projetos" class="hero-projetos">
+            <h1 class="titulo-pagina">Nossos Projetos de Impacto</h1>
+            <p>Conheça as iniciativas que estão transformando vidas e comunidades. Sua ajuda faz cada um desses projetos acontecer.</p>
+        </section>
+        
+        <section class="secao-titulo">
+            <h2>Projetos em Destaque</h2>
+            <p>Navegue pelos projetos ativos e veja como cada área está contribuindo para um futuro mais justo.</p>
+        </section>
+        
+        <section id="projetos-em-destaque">
+            
+            <article class="project-card" id="raizes">
+                <figure class="card-image-container">
+                    <img src="img/projeto-educacao.jpg" alt="Crianças estudando em grupo" loading="lazy">
+                    <span class="badge badge-primaria">Educação</span>
+                </figure>
+                <div class="card-content">
+                    <h3>Raízes do Futuro</h3>
+                    <p>Foca na educação de base, oferecendo aulas de reforço e oficinas de arte e esporte para crianças e adolescentes.</p>
+                    <div class="indicadores">
+                        <span><strong>80</strong> Pessoas Atingidas</span>
+                        <span><strong>15</strong> Voluntários</span>
+                    </div>
+                    <a href="projetos.html#raizes" class="details-link">Ver Detalhes do Projeto</a>
                 </div>
-                <a href="projetos.html#raizes" class="details-link">Ver Detalhes do Projeto</a>
-            </div>
-        </article>
+            </article>
 
-        <article class="project-card" id="conexao">
-            <figure class="card-image-container">
-                <img src="img/hero.jpg.jpg" alt="Jovem usando computador" loading="lazy">
-                <span class="badge badge-primaria-dark">Inclusão Digital</span>
-            </figure>
-            <div class="card-content">
-                <h3>Conexão Digital</h3>
-                <p>Reduzindo a exclusão digital através de cursos básicos de informática e acesso à internet para jovens e adultos.</p>
-                <div class="indicadores">
-                    <span><strong>12</strong> Turmas Formadas</span>
-                    <span><strong>25</strong> Equipamentos Novos</span>
+            <article class="project-card" id="conexao">
+                <figure class="card-image-container">
+                    <img src="img/hero.jpg.jpg" alt="Jovem usando computador" loading="lazy">
+                    <span class="badge badge-primaria-dark">Inclusão Digital</span>
+                </figure>
+                <div class="card-content">
+                    <h3>Conexão Digital</h3>
+                    <p>Reduzindo a exclusão digital através de cursos básicos de informática e acesso à internet para jovens e adultos.</p>
+                    <div class="indicadores">
+                        <span><strong>12</strong> Turmas Formadas</span>
+                        <span><strong>25</strong> Equipamentos Novos</span>
+                    </div>
+                    <a href="projetos.html#conexao" class="details-link">Ver Detalhes do Projeto</a>
                 </div>
-                <a href="projetos.html#conexao" class="details-link">Ver Detalhes do Projeto</a>
-            </div>
-        </article>
+            </article>
 
-        <article class="project-card" id="saude">
-            <figure class="card-image-container">
-                <img src="img/projeto1.jpg" alt="Voluntários realizando atendimento médico" loading="lazy">
-                <span class="badge badge-secundaria">Saúde Preventiva</span>
-            </figure>
-            <div class="card-content">
-                <h3>Saúde Comunitária</h3>
-                <p>Realização de mutirões de saúde preventiva, palestras sobre bem-estar e distribuição de kits de higiene em comunidades.</p>
-                <div class="indicadores">
-                    <span><strong>120</strong> Famílias Ajudadas</span>
-                    <span><strong>5</strong> Médicos Voluntários</span>
+            <article class="project-card" id="saude">
+                <figure class="card-image-container">
+                    <img src="img/projeto1.jpg" alt="Voluntários realizando atendimento médico" loading="lazy">
+                    <span class="badge badge-secundaria">Saúde Preventiva</span>
+                </figure>
+                <div class="card-content">
+                    <h3>Saúde Comunitária</h3>
+                    <p>Realização de mutirões de saúde preventiva, palestras sobre bem-estar e distribuição de kits de higiene em comunidades.</p>
+                    <div class="indicadores">
+                        <span><strong>120</strong> Famílias Ajudadas</span>
+                        <span><strong>5</strong> Médicos Voluntários</span>
+                    </div>
+                    <a href="projetos.html#saude" class="details-link">Ver Detalhes do Projeto</a>
                 </div>
-                <a href="projetos.html#saude" class="details-link">Ver Detalhes do Projeto</a>
-            </div>
-        </article>
-        
-    </section>
-    <section id="voluntariado">
-        <h2>Seja Um Voluntário</h2>
-        <p>Sua paixão e seu tempo são inestimáveis para a nossa causa. Descubra como você pode contribuir com suas habilidades.</p>
-        
-        <details>
-            <summary>Conheça as Áreas de Atuação <span aria-hidden="true">▼</span></summary>
-            <div>
-                <p>Temos diversas áreas: educação, saúde, tecnologia, apoio administrativo. Entre em contato para saber mais!</p>
-            </div>
-        </details>
-        
-        <details>
-            <summary>Pré-requisitos e Processo de Seleção <span aria-hidden="true">▼</span></summary>
-            <div>
-                <p>Preencha o formulário de cadastro e aguarde nosso contato para uma entrevista de perfil.</p>
-            </div>
-        </details>
+            </article>
+            
+        </section>
+        <section id="voluntariado">
+            <h2>Seja Um Voluntário</h2>
+            <p>Sua paixão e seu tempo são inestimáveis para a nossa causa. Descubra como você pode contribuir com suas habilidades.</p>
+            
+            <details>
+                <summary>Conheça as Áreas de Atuação <span aria-hidden="true">▼</span></summary>
+                <div>
+                    <h3>1. Educação e Mentoria</h3>
+                    <p>Ajude em aulas de reforço e mentoria profissional com jovens. <a href="cadastro.html">Quero ser mentor!</a></p>
+                    
+                    <h3>2. Saúde Comunitária</h3>
+                    <p>Participe de mutirões de saúde e palestras de prevenção. (Se você for profissional da área). <a href="cadastro.html">Quero ajudar na saúde!</a></p>
+                    
+                    <h3>3. Apoio Logístico</h3>
+                    <p>Ajude na organização de eventos, transporte de doações e atividades administrativas. <a href="cadastro.html">Quero apoiar a logística!</a></p>
+                </div>
+            </details>
+            
+            <details>
+                <summary>Pré-requisitos e Processo de Seleção <span aria-hidden="true">▼</span></summary>
+                <div>
+                    <p><strong>Requisitos:</strong> Ter mais de 18 anos e disponibilidade de 4h por semana.</p>
+                    <p><strong>Processo:</strong> Cadastro Online -> Entrevista de Perfil -> Treinamento Inicial.</p>
+                </div>
+            </details>
 
-        <a href="cadastro.html" class="cta-button" style="margin-top: var(--espaco-lg);">Cadastre-se como Voluntário</a>
-    </section>
+            <a href="cadastro.html" class="cta-button" style="margin-top: var(--espaco-lg);">Cadastre-se como Voluntário</a>
+        </section>
 
-    <section id="doacao">
-        <h2>Faça a Diferença com Sua Doação</h2>
-        <p>Cada doação, por menor que seja, nos ajuda a manter e expandir o alcance de nossos projetos sociais. Sua contribuição é 100% aplicada em ações de impacto.</p>
+        <section id="doacao">
+            <h2>Faça a Diferença com Sua Doação</h2>
+            <p>Cada doação, por menor que seja, nos ajuda a manter e expandir o alcance de nossos projetos sociais. Sua contribuição é 100% aplicada em ações de impacto.</p>
             <form action="cadastro.html" method="get">
                 <fieldset>
-                    <legend>Como você deseja contribuir?</legend>
+                    <legend>Defina Sua Contribuição:</legend>
+                    
                     <label for="valor-doacao">Valor Sugerido:</label>
                     <select id="valor-doacao" name="valor-sugerido">
                         <option value="50">R$ 50,00</option>
                         <option value="100">R$ 100,00</option>
+                        <option value="250">R$ 250,00</option>
                         <option value="outros">Outro Valor</option>
                     </select>
-                    <label>
+                    
+                    <label class="radio-label">
                         <input type="radio" name="tipo-doacao" value="unica" checked> Doação Única
                     </label>
-                    <label>
-                        <input type="radio" name="tipo-doacao" value="mensal"> Doação Mensal
+                    <label class="radio-label">
+                        <input type="radio" name="tipo-doacao" value="mensal"> Doação Mensal (Recorrente)
                     </label>
+                    
                     <p class="small-text">Ao clicar em "Doar Agora", você será redirecionado para nossa página de cadastro/pagamento seguro.</p>
+                    
                     <button type="submit" class="cta-button">Doar Agora</button>
                 </fieldset>
             </form>
