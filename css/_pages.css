@@ -21,7 +21,7 @@
 }
 .hero-section > div {
     grid-column: 7 / 13; /* Colunas 7 a 12 */
-    padding: var(--espaco-lg);
+    padding: var(--espaco-lg) var(--espaco-xxl) var(--espaco-lg) var(--espaco-lg); /* AJUSTE DE PADDING: Mais espaço na direita */
 }
 
 .valores .destaques {
