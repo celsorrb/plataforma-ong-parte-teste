@@ -29,15 +29,20 @@
                         <li><a href="projetos.html#saude">Saúde Comunitária</a></li>
                     </ul>
                 </li>
-                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+                <li><a href="projetos.html#doacao">Doação</a></li>
+                <li><a href="index.html#contato">Contato</a></li> 
+                <li><a href="cadastro.html" class="cta-header">Cadastre-se</a></li>
             </ul>
         </nav>
-        <a href="projetos.html#doacao" class="cta-button cta-header">Doe Agora</a>
+        
+        <a href="projetos.html#doacao" class="cta-button-header">Doe Agora</a>
+        
     </header>
 
-    <main id="conteudo-principal" role="main">
+    <main id="conteudo-principal">
         
-        <section class="hero-section">
+        <section id="hero" class="hero-section">
             <figure>
                 <img src="img/hero.jpg.jpg" alt="Foto de voluntários felizes em uma ação social.">
             </figure>
@@ -49,12 +54,14 @@
             </div>
         </section>
 
-        <section id="missao-e-valores">
-            <h2>Nossa Missão</h2>
-            <p>Empoderar comunidades através de projetos sustentáveis que garantam acesso à educação de qualidade, saúde preventiva e oportunidades de desenvolvimento pessoal e profissional.</p>
+        <section id="missao-valores">
+            <div class="secao-titulo">
+                <h2>Nossa Missão</h2>
+                <p>Empoderar comunidades através de projetos sustentáveis que garantam acesso à educação de qualidade, saúde preventiva e oportunidades de desenvolvimento pessoal e profissional.</p>
+            </div>
             
             <div class="valores">
-                <h3>Valores</h3>
+                <h3 style="text-align: center;">Valores</h3>
                 <div class="destaques">
                     <article>
                         <h4>Transparência</h4>
@@ -72,18 +79,18 @@
             </div>
         </section>
 
-        <section id="como-ajudar">
+        <section id="chamada-ajuda">
             <h2>Como Você Pode Fazer a Diferença</h2>
             <div class="destaques">
                 <article>
                     <h3>Voluntariado</h3>
                     <p>Dedique seu tempo e talento para as nossas causas. Seja mentor, professor, ou ajude na logística dos eventos.</p>
-                    <a href="projetos.html#voluntariado" class="cta-button cta-secundario">Detalhes do Voluntariado</a>
+                    <a href="projetos.html#voluntariado" class="details-link">Detalhes do Voluntariado</a>
                 </article>
                 <article>
                     <h3>Doação</h3>
                     <p>Qualquer valor ajuda a manter a infraestrutura dos projetos, comprar materiais e garantir a alimentação das crianças.</p>
-                    <a href="projetos.html#doacao" class="cta-button cta-secundario">Faça sua Doação</a>
+                    <a href="projetos.html#doacao" class="details-link">Faça sua Doação</a>
                 </article>
             </div>
         </section>
@@ -109,7 +116,7 @@
     <footer>
         <p>&copy; 2024 [Nome da ONG]. Todos os direitos reservados. | <a href="#">Termos de Uso</a></p>
     </footer>
-
-    <script src="js/script.js" type="module"></script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
