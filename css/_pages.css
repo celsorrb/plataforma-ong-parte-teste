@@ -1,0 +1,192 @@
+/* Módulo: _pages.css - Estilos específicos de Páginas */
+
+/* ========================================= */
+/* HOME (index.html) */
+/* ========================================= */
+
+.hero-section {
+    grid-column: 1 / -1; 
+    display: grid;
+    /* 12 colunas, 6 para imagem, 6 para conteúdo */
+    grid-template-columns: repeat(12, 1fr); 
+    gap: var(--espaco-lg);
+    align-items: center;
+    padding: 0; /* A seção Hero não tem padding interno para a imagem */
+    box-shadow: none; /* Hero não tem sombra */
+    background-color: transparent;
+}
+.hero-section figure {
+    grid-column: 1 / 7; /* Colunas 1 a 6 */
+    margin: 0;
+}
+.hero-section > div {
+    grid-column: 7 / 13; /* Colunas 7 a 12 */
+    padding: var(--espaco-lg);
+}
+
+.valores .destaques {
+    display: flex;
+    gap: var(--espaco-lg);
+    margin-top: var(--espaco-md);
+}
+.destaques article {
+    flex: 1;
+    padding: var(--espaco-lg);
+    background-color: var(--cor-neutra-light);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--border-radius);
+    transition: transform 0.2s;
+}
+
+/* ========================================= */
+/* PROJETOS (projetos.html) */
+/* ========================================= */
+#projetos-em-destaque {
+    /* Usando Grid para o layout dos cards de projetos */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 2 ou mais colunas */
+    gap: var(--espaco-xl);
+    margin-top: var(--espaco-lg);
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    grid-column: 1 / -1;
+}
+
+/* Voluntariado Details */
+#voluntariado details {
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--border-radius);
+    margin-top: var(--espaco-md);
+    background-color: #fafafa;
+}
+
+/* Doação Form */
+#doacao form {
+    background-color: #e9f7ef; 
+    padding: var(--espaco-xxl);
+    max-width: 500px;
+    margin-top: var(--espaco-md);
+}
+
+/* ========================================= */
+/* CADASTRO (cadastro.html) */
+/* ========================================= */
+#cadastroForm .form-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--espaco-lg);
+    margin-bottom: var(--espaco-xl);
+}
+
+#cadastroForm fieldset {
+    border: 1px solid var(--cor-borda);
+    padding: var(--espaco-xl);
+    border-radius: var(--border-radius);
+    grid-column: 1 / -1; /* Ocupa a largura total da seção */
+}
+
+#cadastroForm legend {
+    font-size: var(--tamanho-h4);
+    font-weight: bold;
+    color: var(--cor-primaria-dark);
+    padding: 0 var(--espaco-sm);
+}
+
+#cadastroForm label {
+    display: block;
+    margin-top: var(--espaco-sm);
+    font-weight: bold;
+    grid-column: span 1; /* Ocupa 1 coluna por padrão */
+}
+
+#cadastroForm input[type="text"],
+#cadastroForm input[type="email"],
+#cadastroForm input[type="tel"],
+#cadastroForm input[type="date"],
+#cadastroForm select {
+    width: 100%;
+    padding: var(--espaco-md);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--border-radius);
+    margin-top: var(--espaco-xs);
+}
+
+#cadastroForm input[readonly] {
+    background-color: var(--cor-neutra-light);
+    cursor: not-allowed;
+}
+
+.termos {
+    grid-column: 1 / -1;
+    margin-bottom: var(--espaco-xl);
+}
+
+.alert-warning {
+    background-color: #fff3cd; 
+    color: #664d03;
+    padding: var(--espaco-md);
+    border-radius: var(--border-radius);
+    border: 1px solid #ffecb5;
+    margin-top: var(--espaco-md);
+    grid-column: 1 / -1;
+}
+
+/* ========================================= */
+/* ESTILOS ADICIONADOS PARA JS (Entrega III) */
+/* ========================================= */
+
+/* 1. Estilo para as mensagens de erro de validação do formulário */
+.error-message {
+    color: #dc3545; /* Vermelho forte para erro */
+    font-size: var(--tamanho-small);
+    margin-top: -10px; /* Ajusta a margem para ficar mais perto do input */
+    margin-bottom: var(--espaco-md);
+    display: block; /* Garante que ocupa a linha toda */
+    grid-column: span 1; /* Ocupa a mesma coluna do input pai */
+}
+
+/* 2. Estilo para o grid de cards injetado pelo templates.js */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: var(--espaco-xl); 
+    margin-top: var(--espaco-lg); 
+    grid-column: 1 / -1; /* Ocupa a largura total do main */
+}
+
+/* 3. Estilo para o Card de Projeto (Para garantir o layout visual) */
+.card-projeto {
+    box-shadow: var(--sombra-padrao);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--cor-clara);
+    transition: transform 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.card-projeto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.card-projeto figure {
+    height: 200px;
+    overflow: hidden;
+}
+.card-projeto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card-content {
+    padding: var(--espaco-md);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.card-content .cta-button {
+    margin-top: auto; 
+    align-self: flex-start;
+}
+/* FIM DOS ESTILOS ADICIONADOS PARA JS */

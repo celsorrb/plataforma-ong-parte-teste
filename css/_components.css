@@ -1,0 +1,49 @@
+/* Estilo para Mensagens de Erro de Validação */
+.error-message {
+    color: #dc3545; /* Vermelho forte */
+    font-size: var(--tamanho-small);
+    margin-top: -10px; /* Reduz espaço entre input e mensagem */
+    margin-bottom: var(--espaco-md);
+    display: block;
+}
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: var(--espaco-xl); 
+    margin-top: var(--espaco-lg); 
+    grid-column: 1 / -1; /* Ocupa a largura total do main */
+}
+/* Estilo de card-projeto (Se ainda não tiver) */
+.card-projeto {
+    box-shadow: var(--sombra-padrao);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--cor-clara);
+    transition: transform 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.card-projeto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.card-projeto figure {
+    height: 200px; /* Altura fixa para a imagem */
+    overflow: hidden;
+}
+.card-projeto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card-content {
+    padding: var(--espaco-md);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.card-content .cta-button {
+    margin-top: auto; /* Empurra o botão para baixo */
+    align-self: flex-start;
+}

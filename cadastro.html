@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça nossos projetos sociais, descubra como ser voluntário e faça uma doação online para apoiar nossa causa.">
+    <title>Projetos, Voluntariado e Doação - [Nome da ONG]</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/ong-logo.png"> 
+</head>
+<body>
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo</a>
+    
+    <header>
+        <div class="logo">
+            <img src="img/ong-logo.png" alt="Logotipo da ONG - Juntos Pela Causa">
+        </div>
+        
+        <button class="menu-toggle" aria-controls="navegacao-principal" aria-expanded="false" aria-label="Abrir Menu">☰</button>
+        
+        <nav aria-label="Navegação Principal" id="navegacao-principal">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                 <li class="dropdown">
+                    <a href="projetos.html" aria-current="page" role="button" aria-expanded="false">Projetos Sociais ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="projetos.html#raizes">Raízes do Futuro</a></li>
+                        <li><a href="projetos.html#conexao">Conexão Digital</a></li>
+                        <li><a href="projetos.html#saude">Saúde Comunitária</a></li>
+                    </ul>
+                </li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+        <a href="#doacao" class="cta-button cta-header">Doe Agora</a>
+    </header>
+
+    <main id="conteudo-principal" role="main">
+        
+        <section id="apresentacao-projetos">
+            <h1>Nossos Pilares de Impacto Social</h1>
+            <p>Conheça os projetos que estamos realizando, as comunidades que estamos alcançando e o impacto positivo de sua ajuda. Seu apoio torna tudo isso possível.</p>
+        </section>
+
+        <section id="projetos-em-destaque">
+            <h2>Projetos Ativos</h2>
+            </section>
+
+        <section id="voluntariado">
+            <h2>Seja um Voluntário Transformador</h2>
+            <p>O voluntariado é o coração de nossa ONG. Suas habilidades e tempo podem mudar a vida de muitas pessoas. Veja como participar:</p>
+            
+            <details>
+                <summary>Como me candidatar?</summary>
+                <p>O primeiro passo é preencher o nosso formulário de cadastro. Em seguida, nossa equipe de RH entrará em contato para uma entrevista de perfil e alocação no projeto mais adequado às suas habilidades e disponibilidade.</p>
+            </details>
+            
+            <details>
+                <summary>Quais são as áreas de atuação?</summary>
+                <p>Temos vagas nas áreas de reforço escolar (leitura e matemática), oficinas de arte/esportes, suporte administrativo, comunicação (redes sociais) e eventos.</p>
+            </details>
+            
+            <a href="cadastro.html" class="cta-button">Preencha o Formulário de Voluntário</a>
+        </section>
+
+        <section id="doacao">
+            <h2>Faça uma Doação</h2>
+            <p>Cada doação, por menor que seja, nos ajuda a manter e expandir o alcance de nossos projetos sociais. Sua contribuição é 100% aplicada em ações de impacto.</p>
+            <form action="cadastro.html" method="get">
+                <fieldset>
+                    <legend>Como você deseja contribuir?</legend>
+                    <label for="valor-doacao">Valor Sugerido:</label>
+                    <select id="valor-doacao" name="valor-sugerido">
+                        <option value="50">R$ 50,00</option>
+                        <option value="100">R$ 100,00</option>
+                        <option value="outros">Outro Valor</option>
+                    </select>
+                    <label>
+                        <input type="radio" name="tipo-doacao" value="unica" checked> Doação Única
+                    </label>
+                    <label>
+                        <input type="radio" name="tipo-doacao" value="mensal"> Doação Mensal
+                    </label>
+                    <p class="small-text">Ao clicar em "Doar Agora", você será redirecionado para nossa página de cadastro/pagamento seguro.</p>
+                    <button type="submit" class="cta-button">Doar Agora</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 [Nome da ONG]. Todos os direitos reservados. | <a href="#">Termos de Uso</a></p>
+    </footer>
+
+    <script src="js/script.js" type="module"></script>
+</body>
+</html>
