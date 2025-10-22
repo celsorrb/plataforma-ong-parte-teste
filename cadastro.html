@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conheça nossos projetos sociais, descubra como ser voluntário e faça uma doação online para apoiar nossa causa.">
-    <title>Projetos, Voluntariado e Doação - [Nome da ONG]</title>
+    <meta name="description" content="Página de cadastro para Voluntários e Doadores. Preencha o formulário para fazer parte da nossa rede de apoio.">
+    <title>Cadastro - Seja Voluntário ou Doador | [Nome da ONG]</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/ong-logo.png"> 
 </head>
 <body>
     <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo</a>
-    
+
     <header>
         <div class="logo">
             <img src="img/ong-logo.png" alt="Logotipo da ONG - Juntos Pela Causa">
@@ -21,77 +20,140 @@
         <nav aria-label="Navegação Principal" id="navegacao-principal">
             <ul>
                 <li><a href="index.html">Início</a></li>
-                 <li class="dropdown">
-                    <a href="projetos.html" aria-current="page" role="button" aria-expanded="false">Projetos Sociais ▼</a>
+                <li class="dropdown">
+                    <a href="projetos.html" role="button" aria-expanded="false">Projetos Sociais ▼</a>
                     <ul class="dropdown-content">
                         <li><a href="projetos.html#raizes">Raízes do Futuro</a></li>
                         <li><a href="projetos.html#conexao">Conexão Digital</a></li>
                         <li><a href="projetos.html#saude">Saúde Comunitária</a></li>
                     </ul>
                 </li>
-                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+                <li><a href="projetos.html#doacao">Doação</a></li>
+                <li><a href="index.html#contato">Contato</a></li> 
+                <li><a href="cadastro.html" aria-current="page" class="cta-header">Cadastre-se</a></li>
             </ul>
         </nav>
-        <a href="#doacao" class="cta-button cta-header">Doe Agora</a>
+        
+        <a href="projetos.html#doacao" class="cta-button-header">Doe Agora</a>
+        
     </header>
 
-    <main id="conteudo-principal" role="main">
-        
-        <section id="apresentacao-projetos">
-            <h1>Nossos Pilares de Impacto Social</h1>
-            <p>Conheça os projetos que estamos realizando, as comunidades que estamos alcançando e o impacto positivo de sua ajuda. Seu apoio torna tudo isso possível.</p>
+    <main id="conteudo-principal">
+        <section class="secao-titulo">
+            <h1>Junte-se à Nossa Causa</h1>
+            <p>Seu interesse em ajudar é o primeiro passo para a transformação. Preencha o formulário abaixo para se registrar como voluntário, doador ou parceiro.</p>
         </section>
 
-        <section id="projetos-em-destaque">
-            <h2>Projetos Ativos</h2>
-            </section>
+        <form id="cadastroForm">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
 
-        <section id="voluntariado">
-            <h2>Seja um Voluntário Transformador</h2>
-            <p>O voluntariado é o coração de nossa ONG. Suas habilidades e tempo podem mudar a vida de muitas pessoas. Veja como participar:</p>
-            
-            <details>
-                <summary>Como me candidatar?</summary>
-                <p>O primeiro passo é preencher o nosso formulário de cadastro. Em seguida, nossa equipe de RH entrará em contato para uma entrevista de perfil e alocação no projeto mais adequado às suas habilidades e disponibilidade.</p>
-            </details>
-            
-            <details>
-                <summary>Quais são as áreas de atuação?</summary>
-                <p>Temos vagas nas áreas de reforço escolar (leitura e matemática), oficinas de arte/esportes, suporte administrativo, comunicação (redes sociais) e eventos.</p>
-            </details>
-            
-            <a href="cadastro.html" class="cta-button">Preencha o Formulário de Voluntário</a>
-        </section>
+                <label for="nome">Nome Completo: *</label>
+                <input type="text" id="nome" name="nome" required autocomplete="name">
 
-        <section id="doacao">
-            <h2>Faça uma Doação</h2>
-            <p>Cada doação, por menor que seja, nos ajuda a manter e expandir o alcance de nossos projetos sociais. Sua contribuição é 100% aplicada em ações de impacto.</p>
-            <form action="cadastro.html" method="get">
-                <fieldset>
-                    <legend>Como você deseja contribuir?</legend>
-                    <label for="valor-doacao">Valor Sugerido:</label>
-                    <select id="valor-doacao" name="valor-sugerido">
-                        <option value="50">R$ 50,00</option>
-                        <option value="100">R$ 100,00</option>
-                        <option value="outros">Outro Valor</option>
-                    </select>
-                    <label>
-                        <input type="radio" name="tipo-doacao" value="unica" checked> Doação Única
+                <label for="email">E-mail: *</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+
+                <label for="telefone">Telefone (com DDD): *</label>
+                <input type="tel" id="telefone" name="telefone" required autocomplete="tel" placeholder="(00) 00000-0000">
+
+                <label for="cpf">CPF: *</label>
+                <input type="text" id="cpf" name="cpf" required autocomplete="off" placeholder="000.000.000-00">
+
+                <label for="nascimento">Data de Nascimento: *</label>
+                <input type="date" id="nascimento" name="nascimento" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Endereço</legend>
+
+                <label for="cep">CEP: *</label>
+                <input type="text" id="cep" name="cep" required autocomplete="postal-code" placeholder="00000-000" maxlength="9">
+
+                <label for="endereco">Rua/Avenida: *</label>
+                <input type="text" id="endereco" name="endereco" required autocomplete="street-address" disabled>
+
+                <label for="numero">Número: *</label>
+                <input type="text" id="numero" name="numero" required autocomplete="address-line2">
+
+                <label for="complemento">Complemento:</label>
+                <input type="text" id="complemento" name="complemento" autocomplete="address-line3">
+
+                <label for="bairro">Bairro: *</label>
+                <input type="text" id="bairro" name="bairro" required autocomplete="address-line4">
+
+                <label for="cidade">Cidade: *</label>
+                <input type="text" id="cidade" name="cidade" required disabled>
+
+                <label for="estado">Estado: *</label>
+                <select id="estado" name="estado" required disabled>
+                    <option value="" disabled selected>Selecione seu Estado</option> 
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </fieldset>
+
+            <fieldset class="interesse">
+                <legend>Como Você Deseja Contribuir?</legend>
+                
+                <div style="grid-column: 1 / -1; display: flex; gap: 20px;">
+                    <label class="radio-label">
+                        <input type="checkbox" id="voluntario" name="interesse" value="voluntario"> Desejo ser Voluntário
                     </label>
-                    <label>
-                        <input type="radio" name="tipo-doacao" value="mensal"> Doação Mensal
+                    
+                    <label class="radio-label">
+                        <input type="checkbox" id="doador" name="interesse" value="doador"> Desejo ser Doador/Apoiador
                     </label>
-                    <p class="small-text">Ao clicar em "Doar Agora", você será redirecionado para nossa página de cadastro/pagamento seguro.</p>
-                    <button type="submit" class="cta-button">Doar Agora</button>
-                </fieldset>
-            </form>
-        </section>
+                </div>
+                
+                <label for="mensagem" style="grid-column: 1 / -1; margin-top: var(--espaco-md);">Mensagem / Observações (Opcional):</label>
+                <textarea id="mensagem" name="mensagem" rows="4" style="grid-column: 1 / -1;"></textarea>
+
+                <div role="alert" id="alerta-ajuda" class="alert-warning">
+                    <p>Se você deseja ser voluntário, entraremos em contato para uma entrevista de perfil.</p>
+                    <p>Se você deseja ser doador, após o cadastro, será redirecionado para a página de doação segura.</p>
+                </div>
+            </fieldset>
+
+            <div class="termos">
+                <input type="checkbox" id="aceite_termos" name="aceite_termos" required>
+                <label for="aceite_termos">Li e aceito os <a href="#" target="_blank">Termos de Uso e Política de Privacidade</a>. *</label>
+            </div>
+
+            <button type="submit" class="cta-button">Enviar Cadastro</button>
+        </form>
     </main>
 
     <footer>
-        <p>&copy; 2024 [Nome da ONG]. Todos os direitos reservados. | <a href="#">Termos de Uso</a></p>
+        <p>&copy; 2024 [Nome da ONG]. Seus direitos de privacidade são importantes. | <a href="#">Política de Privacidade</a></p>
     </footer>
-
-    <script src="js/script.js" type="module"></script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
